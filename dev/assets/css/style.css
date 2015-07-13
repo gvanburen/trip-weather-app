@@ -1,0 +1,13 @@
+.bigHeight {
+  height: 400px; }
+
+.valign-wrapper {
+  margin-top: 1em;
+  padding-top: 1em; }
+
+nav {
+  position: absolute;
+  top: 1em; }
+
+.information {
+  padding-top: 4em; }

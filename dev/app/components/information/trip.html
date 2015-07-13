@@ -1,0 +1,35 @@
+<div ng-app="myApp">
+<div ng-controller="mainCtrl">
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper grey lighten-4">
+      <a href="#" class="brand-logo black-text">Logo</a>
+      <ul class="right hide-on-med-and-down black-text">
+        <li><a href="" class="black-text">Learn</a></li>
+        <li><a href="" class="black-text">Why</a></li>
+        <li><a href="" class="black-text">How</a></li>
+      </ul>  
+    </div>
+</nav>
+</div>
+<section class="grey lighten-4 bigHeight information">
+  <section class="container">
+  <section class="row">
+    <div class="col s12 m6">
+      <h4>Train Prices</h4>
+      <div ng-repeat="item in data">
+        <div ng-repeat="price in item">
+          <h6>Name of the fare type</h6>
+          <p>{{price.fare/100 | currency: "£"}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <h4>Weather</h4>
+      <p class="black-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At nam sapiente tempora nihil nisi, ex repellat, quod asperiores quae expedita fugit aliquid excepturi odit, incidunt iste, explicabo modi. Nisi, quae.</p>
+    </div>
+  </section>
+  </section>
+</section>
+</div>
+</div>

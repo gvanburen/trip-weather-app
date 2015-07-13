@@ -1,0 +1,19 @@
+$navBarOffset: 1em;
+
+.bigHeight {
+  height: 400px;
+}
+
+.valign-wrapper {
+  margin-top: $navBarOffset;
+  padding-top: $navBarOffset;
+}
+
+nav {
+  position: absolute;
+  top: $navBarOffset;
+}
+
+.information {
+  padding-top: (4*$navBarOffset);
+}
