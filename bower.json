@@ -1,0 +1,22 @@
+{
+  "name": "trip-weather-app",
+  "version": "0.0.0",
+  "homepage": "https://github.com/gvanburen/trip-weather-app",
+  "authors": [
+    "Greg Van Buren <g.vanburen@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular-route": "~1.4.2",
+    "angular": "~1.4.2",
+    "materialize": "~0.97.0"
+  }
+}

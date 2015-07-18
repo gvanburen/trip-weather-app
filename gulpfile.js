@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var del = require('del');
-var concat = require('gulp-concat');  
+var concat = require('gulp-concat');
+var usemin = require('gulp-usemin'); 
 var uglify = require('gulp-uglify'); 
 var minifyCss = require('gulp-minify-css'); 
 var rename = require('gulp-rename');
@@ -8,12 +9,13 @@ var inject = require('gulp-inject');
 var imagemin = require('gulp-imagemin');
 var sass = require('gulp-sass');
 var gutil = require('gulp-util');
+var minifyHtml = require('gulp-minify-html');
+var rev = require('gulp-rev');
 
 gulp.task('clean', function(){
     del([
     'build/**',
-    '!build',
-    '!build/index.html']);
+    '!build']);
 });
 
 gulp.task('scripts', function(){
@@ -23,6 +25,16 @@ gulp.task('scripts', function(){
     .pipe(uglify().on('error', gutil.log))
     .pipe(gulp.dest('build/js'));
 });
+
+gulp.task('usemin', function(){
+    return gulp.src('dev/*.html')
+    .pipe(usemin({
+        css: [minifyCss(), 'concat'],
+        html: [minifyHtml({empty:true})],
+        js: [uglify()]
+    }))
+    .pipe(gulp.dest('build/'));
+})
 
 gulp.task('index', function(){
     var target = gulp.src('build/index.html')
@@ -48,5 +60,4 @@ gulp.task('sass:watch', function () {
   gulp.watch('dev/**/**/*.scss', ['sass']);
 });
 
-gulp.task('build', ['clean', 'scripts','sass','minify-css', 'index']);
-gulp.task('miniMe', ['scripts']);
+gulp.task('build', ['clean', 'sass','usemin']);
