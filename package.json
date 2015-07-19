@@ -2,8 +2,9 @@
   "name": "trip-weather-app",
   "version": "1.0.0",
   "description": "",
-  "main": "nodeRoute.js",
+  "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.13.2",
     "express": "^4.13.1"
   },
   "devDependencies": {
