@@ -1,6 +1,5 @@
 var path = require('path');
 
 exports.test = function(req, res) {
-  console.log(req.body);
-  res.sendFile('test.html', {root: path.join(__dirname, '../views')});
+  res.send('did you just submit this?');//File('test.html', {root: path.join(__dirname, '../../public/views')});
 }

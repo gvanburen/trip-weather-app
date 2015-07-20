@@ -5,7 +5,8 @@
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.13.2",
-    "express": "^4.13.1"
+    "express": "^4.13.1",
+    "method-override": "^2.3.4"
   },
   "devDependencies": {
     "del": "^1.2.0",
