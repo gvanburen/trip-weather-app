@@ -1,5 +1,5 @@
-angular.module('trather')
-    .controller('tripCtrl', ['$scope',function($scope){
+angular.module('tripCtrl',[])
+    .controller('tripController', ['$scope',function($scope){
       var apiData  = {
         "orig": {
             "nlc": "8487",
@@ -16,7 +16,7 @@ angular.module('trather')
             "longname": "OXFORD",
             "ticketname": "OXFORD",
             "code": "OXF"
-        }, 
+        },
         "fares": [
             {
                 "adult": {
@@ -58,7 +58,7 @@ angular.module('trather')
                     "fare": 24530
                 }
             },
-            
+
         ]
     };
       $scope.data = apiData.fares;

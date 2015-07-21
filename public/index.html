@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="weatherTrip">
   <head>
     <meta charset="utf-8">
     <base href="/">
-    <title>Node and Angular</title>
+    <title>weather Trip</title>
     <link rel="stylesheet" type="text/css" href="libs/materialize/dist/css/materialize.css">
   </head>
-  <body ng-app="sampleApp" ng-controller="MainController">
-
+  <body>
     <div ng-view>
     </div>
     <script src="libs/angular/angular.js"></script>
     <script src="libs/angular-route/angular-route.js"></script>
 
-    <script src="js/controllers/MainCtrl.js"></script>
+    <script src="js/controllers/homeCtrl.js"></script>
+    <script src="js/controllers/tripCtrl.js" charset="utf-8"></script>
+    <script src="js/factories/storageFactory.js" charset="utf-8"></script>
     <script src="js/appRoutes.js" charset="utf-8"></script>
     <script src="js/app.js" charset="utf-8"></script>
   </body>

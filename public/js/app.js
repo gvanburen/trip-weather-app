@@ -1,1 +1,1 @@
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl']);
+angular.module('weatherTrip', ['ngRoute', 'appRoutes', 'homeCtrl', 'tripCtrl', 'tripStorage']);

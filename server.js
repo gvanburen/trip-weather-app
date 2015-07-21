@@ -18,10 +18,10 @@ app.use(methodOverride());
 require('./app/routes.js')(app);
 
 // set the static files location /public
-app.use('/libs', express.static(__dirname + '/public/libs'));
-app.use('/js', express.static(__dirname + '/public/js'));
-app.use('/css', express.static(__dirname + '/public/css'));
-app.use('/views', express.static(__dirname + '/public/views'));
+// app.use('/libs', express.static(__dirname + '/public/libs'));
+// app.use('/js', express.static(__dirname + '/public/js'));
+// app.use('/css', express.static(__dirname + '/public/css'));
+// app.use('/views', express.static(__dirname + '/public/views'));
 
 app.listen(port);
 console.log('navigate browser to ' + port);
