@@ -19,19 +19,19 @@
       <form><!-- action="/wolf" method="post">-->
         <div class="col s6 m6">
           <label for="origin">origin:</label>
-          <input ng-model="destination" type="text" name="origin" placeholder="Oxford" />
+          <input ng-model="origin" type="text" name="origin" placeholder="Oxford" />
         </div>
         <div class="col s6 m6">
           <label for="dest">destination:</label>
-          <input type="text" name="dest" placeholder="Leeds" />
+          <input ng-model="destination" type="text" name="dest" placeholder="Leeds" />
         </div>
         <div class="col s6 m6">
-          <label for="fromDate">from:</label>
-          <input type="date" name="fromDate" />
+          <label for="fdate">from:</label>
+          <input ng-model="fromDate" type="date" name="fdate" />
         </div>
         <div class="col s6 m6">
-          <label for="toDate">to:</label>
-          <input type="date" name="toDate" />
+          <label for="todate">to:</label>
+          <input ng-model="toDate" type="date" name="tdate" />
         </div>
         <div class="right">
           <button ng-click="gatherData()" type="submit">Submit</button>

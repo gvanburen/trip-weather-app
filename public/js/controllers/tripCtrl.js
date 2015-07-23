@@ -1,5 +1,16 @@
 angular.module('tripCtrl',[])
-    .controller('tripController', ['$scope',function($scope){
+    .controller('tripController', ['$scope', '$log','storageFactory',
+    function($scope, $log, storageFactory){
+      var tripInformation = JSON.parse(storageFactory.getData('trip'));
+
+      $scope.origin = tripInformation.origin;
+      $scope.destination = tripInformation.destination;
+      $scope.toDate = tripInformation.toDate;
+      $scope.fromDate = tripInformation.fromDate;
+
+      // call models.wolf with tripInformation parameters
+
+      // call railAPI with tripInformation parameters
       var apiData  = {
         "orig": {
             "nlc": "8487",
