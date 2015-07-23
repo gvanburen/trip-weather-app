@@ -12,8 +12,8 @@ angular.module('homeCtrl',[])
 			// test = JSON.parse(storageFactory.getData('trip'));
 			// $log.log(test.destination);
 
-			wolfFactory.wolfWeather(tripData);
-
-
+			wolfFactory.wolfWeather(tripData).then(function(data){
+					$log.log(data);
+				});
 		};
 	}]);
