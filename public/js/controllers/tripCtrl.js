@@ -1,14 +1,20 @@
 angular.module('tripCtrl',[])
-    .controller('tripController', ['$scope', '$log','storageFactory',
-    function($scope, $log, storageFactory){
-      var tripInformation = JSON.parse(storageFactory.getData('trip'));
+    .controller('tripController', ['$scope', '$http','$log','storageFactory', 'railFactory',
+    function($scope, $http, $log, storageFactory, railFactory){
+      var tripData = JSON.parse(storageFactory.getData('trip'));
 
-      $scope.origin = tripInformation.origin;
-      $scope.destination = tripInformation.destination;
-      $scope.toDate = tripInformation.toDate;
-      $scope.fromDate = tripInformation.fromDate;
+      $scope.origin = tripData.origin;
+      $scope.destination = tripData.destination;
+      $scope.toDate = tripData.toDate;
+      $scope.fromDate = tripData.fromDate;
 
-      // call models.wolf with tripInformation parameters
+      railFactory.getOrigin(tripData).then(function(data){
+        $log.log(data[0]);
+        //storageFactory.setData('originCode', data[0].code);
+      });
+      railFactory.getDestination(tripData).then(function(data){
+        $log.log(data[0]);
+      });
 
       // call railAPI with tripInformation parameters
       var apiData  = {

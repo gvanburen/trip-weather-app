@@ -9,8 +9,9 @@ angular.module('tripWolf',[])
                   deferred.resolve(data);
                   $log.log(data);
                 })
-                .error(function(data){
-                  $log.log('Error:' + data);
+                .error(function(e){
+                  $log.log('Error: ' + e);
+                  deferred.reject(e);
                 });
               return deferred.promise;
               }

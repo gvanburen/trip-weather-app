@@ -1,5 +1,6 @@
 var path        = require('path');
 var http        = require('http');
+var request     = require('request');
 var dateFormat  = require('dateformat');
 var wolfram     = require('wolfram').createClient("YVKY3W-A8PRJ277XJ")
 
@@ -18,10 +19,28 @@ exports.wolf = function(req, res) {
     res.json(result)
     //console.log("Result: %j", result);
   });
+}
 
-  // var options = {
-  //   host: 'http://api.wolframalpha.com/',
-  //   path: 'v2/query?input=average+temperature+in+' + dest + '+from+' + fromDateMonth + '+' + fromDateDay + '+to+' + toDateMonth + '+' + toDateDay + '&appid='
-  // }
-  //res.send('did you just submit this?');//File('test.html', {root: path.join(__dirname, '../../public/views')});
+exports.originCode = function(req, res){
+  var myLocation = req.body.origin;
+  var options = {
+    url: 'http://api.brfares.com/ac_loc?term=' + myLocation
+  };
+  request(options, function(error, response, body){
+    res.json(body);
+  });
+}
+
+exports.destinationCode = function(req, res){
+  var myLocation = req.body.destination;
+  var options = {
+    url: 'http://api.brfares.com/ac_loc?term=' + myLocation
+  };
+  request(options, function(error, response, body){
+    res.json(body);
+  });
+}
+
+exports.fare = function(req, req){
+
 }

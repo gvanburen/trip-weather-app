@@ -1,6 +1,6 @@
 angular.module('homeCtrl',[])
-	.controller('homeController', ['$scope', '$log','storageFactory', 'wolfFactory',
-	function($scope, $log, storageFactory, wolfFactory){
+	.controller('homeController', ['$scope', '$location', '$log','storageFactory', 'wolfFactory',
+	function($scope, $location, $log, storageFactory, wolfFactory){
 		$scope.gatherData = function(){
 			var tripData = {
 				'origin': $scope.origin,
@@ -14,6 +14,9 @@ angular.module('homeCtrl',[])
 
 			wolfFactory.wolfWeather(tripData).then(function(data){
 					$log.log(data);
+					storageFactory.setData('wolf', JSON.stringify(data));
+					$location.path('/trip');
 				});
+
 		};
 	}]);
