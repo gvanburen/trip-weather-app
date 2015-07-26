@@ -1,5 +1,5 @@
 angular.module('tripCtrl',[])
-    .controller('tripController', ['$scope', '$http','$log','storageFactory', 'railFactory',
+    .controller('tripController', ['$scope', '$http', '$log', 'storageFactory', 'railFactory',
     function($scope, $http, $log, storageFactory, railFactory){
       var tripData = JSON.parse(storageFactory.getData('trip'));
 
@@ -8,15 +8,48 @@ angular.module('tripCtrl',[])
       $scope.toDate = tripData.toDate;
       $scope.fromDate = tripData.fromDate;
 
-      railFactory.getOrigin(tripData).then(function(data){
-        $log.log(data[0]);
-        //storageFactory.setData('originCode', data[0].code);
-      });
-      railFactory.getDestination(tripData).then(function(data){
-        $log.log(data[0]);
-      });
 
-      // call railAPI with tripInformation parameters
+      function cleanUp(){
+        $log.log('cleaning up');
+        storageFactory.clearData('destCode');
+        storageFactory.clearData('originCode');
+      };
+
+      function getOrigin(){
+        $log.log('first');
+        railFactory.getOrigin(tripData);
+      };
+
+      function getDestination(){
+        $log.log('second');
+        railFactory.getDestination(tripData);
+        window.setTimeout(setFare,1000);
+      };
+
+      function setFare(){
+        $log.log('third');
+        var fareData = {
+          'origCode': storageFactory.getData('originCode'),
+          'destCode': storageFactory.getData('destCode')
+        };
+        storageFactory.setData('fareData',JSON.stringify(fareData));
+        window.setTimeout(getFare,1000);
+      };
+
+      function getFare(){
+        var fareData = JSON.parse(storageFactory.getData('fareData'));
+        $scope.origCode = fareData.origCode;
+        $scope.destCode = fareData.destCode;
+        railFactory.getFare(fareData);
+      };
+
+      cleanUp();
+      getOrigin();
+      getDestination();
+
+
+
+      // test data
       var apiData  = {
         "orig": {
             "nlc": "8487",

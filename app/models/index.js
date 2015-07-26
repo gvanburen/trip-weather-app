@@ -21,26 +21,31 @@ exports.wolf = function(req, res) {
   });
 }
 
-exports.originCode = function(req, res){
-  var myLocation = req.body.origin;
+exports.origin = function(req, res){
+  var origin = req.body.origin;
+  console.log(origin);
   var options = {
-    url: 'http://api.brfares.com/ac_loc?term=' + myLocation
+    url: 'http://api.brfares.com/ac_loc?term=' + origin
   };
   request(options, function(error, response, body){
-    res.json(body);
+    res.send(body);
+    console.log(body);
   });
 }
 
-exports.destinationCode = function(req, res){
-  var myLocation = req.body.destination;
+exports.destination = function(req, res){
+  var dest = req.body.destination;
+  console.log(dest);
   var options = {
-    url: 'http://api.brfares.com/ac_loc?term=' + myLocation
+    url: 'http://api.brfares.com/ac_loc?term=' + dest
   };
   request(options, function(error, response, body){
-    res.json(body);
+    res.send(body);
+    console.log(body);
   });
 }
 
 exports.fare = function(req, req){
-
+  var origin = req;
+  console.log(origin);
 }

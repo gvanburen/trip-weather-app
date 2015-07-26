@@ -1,14 +1,13 @@
 angular.module('tripRail',[])
-    .factory('railFactory',['$http', '$log', '$q',
-        function($http, $log, $q) {
+    .factory('railFactory',['$http', '$log', '$q','storageFactory',
+        function($http, $log, $q, storageFactory) {
             var deferred = $q.defer();
             return {
               getOrigin: function (tripData){
-                $log.log('getting origin');
                 $http.post('/origin', tripData)
-                  .success(function(data){
-                    deferred.resolve(data);
-                    $log.log(data);
+                  .success(function(orig){
+                    storageFactory.setData('originCode', orig[0].code);
+                    deferred.resolve(orig);
                   })
                   .error(function(e){
                     $log.log('Error: ' + e);
@@ -17,63 +16,27 @@ angular.module('tripRail',[])
                 return deferred.promise;
             },
               getDestination: function(tripData){
-                $log.log('getting destination');
                 $http.post('/destination', tripData)
-                  .success(function(data){
-                    deferred.resolve(data);
-                    $log.log(data);
+                  .success(function(dest){
+                    storageFactory.setData('destCode', dest[0].code);
+                    deferred.resolve(dest);
                   })
                   .error(function(e){
                     $log.log('Error: ' + e);
                     deferred.reject(e);
                   });
                 return deferred.promise;
-            }/*,
-              getFare: function(){
-                $http.post('/fare', )
+            },
+              getFare: function(fareData){
+                $http.post('/fare', fareData)
                   .success(function(data){
                     deferred.resolve(data);
-                    $log.log(data);
                   })
                   .error(function(e){
                     $log.log('Error: ' + e);
                     deferred.reject(e);
                   });
                   return deferred.promise;
-              }*/
+              }
             };
-
-
-            //   var tripOrigin = tripData.origin;
-            //   var tripDest = tripData.destination;
-            //   $http({
-            //     method: 'GET',
-            //     url: 'http://api.brfares.com/ac_loc?term=' + tripOrigin
-            //   }).then(function(data){
-            //     var fareOrigin = data[0].code;
-            //     $http({
-            //       method: 'GET',
-            //       url: 'http://api.brfares.com/ac_loc?term=' + tripDestination
-            //     }).then(function(data){
-            //       var fareDestination = data[0].code;
-            //       $http({
-            //         method: 'GET',
-            //         url: 'http://api.brfares.com/querysimple?orig=' + fareOrigin + '&dest=' + fareDestination
-            //       }).then(function(data){
-            //
-            //       })
-            //     })
-            //   })
-            //   }).post('/wolf', tripData)
-            //     .success(function(data){
-            //       deferred.resolve(data);
-            //       $log.log(data);
-            //     })
-            //     .error(function(e){
-            //       $log.log('Error: ' + e);
-            //       deferred.reject(e);
-            //     });
-            //   return deferred.promise;
-            //   }
-            // };
       }]);

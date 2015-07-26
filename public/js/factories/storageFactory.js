@@ -10,6 +10,9 @@ angular.module('tripStorage',[])
                 getData: function(key) {
                     $log.log('retreiving ' + key + ' data');
                     return $window.localStorage.getItem(key);
+                },
+                clearData: function(key){
+                    $window.localStorage.removeItem(key);
                 }
             };
         }
