@@ -12,12 +12,10 @@ exports.wolf = function(req, res) {
   var frD = dateFormat(req.body.fromDate, "dd")
 
   var q = 'average temperature in ' + dest + ' from ' + frM + ' ' + frD + ' to ' + toM + ' ' + toD;
-  // average temperature in dest from month day to month day
   console.log(q);
   wolfram.query(q, function(err, result) {
     if(err) throw err
     res.json(result)
-    //console.log("Result: %j", result);
   });
 }
 
