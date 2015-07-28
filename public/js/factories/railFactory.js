@@ -28,15 +28,17 @@ angular.module('tripRail',[])
                 return deferred.promise;
             },
               getFare: function(fareData){
-                $http.post('/fare', fareData)
-                  .success(function(data){
-                    deferred.resolve(data);
-                  })
-                  .error(function(e){
-                    $log.log('Error: ' + e);
-                    deferred.reject(e);
-                  });
-                  return deferred.promise;
+                fareData = JSON.stringify(fareData);
+                return $http.post('/fare', fareData);
+                //   .success(function(fare){
+                //     //$log.log(fare);
+                //     deferred.resolve(fare);
+                //   })
+                //   .error(function(e){
+                //     $log.log('Error: ' + e);
+                //     deferred.reject(e);
+                //   });
+                // return deferred.promise;
               }
             };
       }]);

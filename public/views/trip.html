@@ -15,11 +15,9 @@
   <section class="row">
     <div class="col s12 m6">
       <h4>Train Prices</h4>
-      <div ng-repeat="item in data">
-        <div ng-repeat="price in item">
-          <h6>Name of the fare type</h6>
-          <p>{{price.fare/100 | currency: "£"}}</p>
-        </div>
+      <div ng-repeat="ticket in tickets">
+        <h6>{{ ticket.ticket.longname }}</h6>
+        <p>{{ ticket.adult.fare/100 | currency: "£"}}</p>
       </div>
     </div>
     <div class="col s12 m6">
