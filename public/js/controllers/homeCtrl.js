@@ -1,6 +1,10 @@
 angular.module('homeCtrl',[])
-	.controller('homeController', ['$scope', '$location', '$log','storageFactory', 'wolfFactory',
-	function($scope, $location, $log, storageFactory, wolfFactory){
+	.controller('homeController', ['$scope', '$location', '$anchorScroll', '$log','storageFactory', 'wolfFactory',
+	function($scope, $location, $anchorScroll, $log, storageFactory, wolfFactory){
+		$scope.scrollTo = function(id) {
+			$location.hash(id);
+			$anchorScroll();
+		};
 		$scope.gatherData = function(){
 			var tripData = {
 				'origin': $scope.origin,

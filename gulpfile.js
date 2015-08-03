@@ -1,9 +1,9 @@
 var gulp = require('gulp');
 var del = require('del');
 var concat = require('gulp-concat');
-var usemin = require('gulp-usemin'); 
-var uglify = require('gulp-uglify'); 
-var minifyCss = require('gulp-minify-css'); 
+var usemin = require('gulp-usemin');
+var uglify = require('gulp-uglify');
+var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var inject = require('gulp-inject');
 var imagemin = require('gulp-imagemin');
@@ -51,9 +51,9 @@ gulp.task('minify-css', function(){
 });
 
 gulp.task('sass', function(){
-    gulp.src('dev/**/**/*.scss')
+    gulp.src('public/css/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('dev'));
+    .pipe(gulp.dest('public/css'));
 });
 
 gulp.task('sass:watch', function () {

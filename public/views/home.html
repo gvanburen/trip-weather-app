@@ -1,56 +1,64 @@
 <div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper green darken-1">
-      <a href="#" class="brand-logo">Logo</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="">Learn</a></li>
-        <li><a href="">Why</a></li>
-        <li><a href="">How</a></li>
+  <nav class="center">
+    <div class="nav-wrapper light-green darken-1">
+      <a href="#" class="center white-text appName">Alpha Trip</a>
+      <ul class="right hide-on-sml-and-down">
+        <li><a href="" ng-click="scrollTo('learnMore')">Learn More</a></li>
       </ul>
     </div>
 </nav>
 </div>
-<section class="container valign-wrapper bigHeight">
+<section class="container valign-wrapper bigHeight" id="learnMore">
   <section class="row valign">
     <section class="col s12 m6">
       <h2>Pack Accordingly.</h2>
     </section>
-    <section class="col s12 m6">
-      <form><!-- action="/wolf" method="post">-->
-        <div class="col s6 m6">
-          <label for="origin">origin:</label>
-          <input ng-model="origin" type="text" name="origin" placeholder="Oxford" />
+    <form class="col s12 m6">
+      <section class="row">
+        <div class="input-field col s6">
+          <input ng-model="origin" type="text" id="origin" placeholder="Oxford"/>
+          <label class="active" for="origin">Origin:</label>
         </div>
-        <div class="col s6 m6">
-          <label for="dest">destination:</label>
-          <input ng-model="destination" type="text" name="dest" placeholder="Leeds" />
+        <div class="input-field col s6">
+          <input ng-model="destination" type="text" id="dest" placeholder="Leeds"/>
+          <label class="active" for="dest">Destination:</label>
         </div>
-        <div class="col s6 m6">
-          <label for="fdate">from:</label>
-          <input ng-model="fromDate" type="date" name="fdate" />
+        <div class="input-field col s6">
+          <input ng-model="fromDate" type="date" id="fdate" />
+          <label class="active" for="fdate">From:</label>
         </div>
-        <div class="col s6 m6">
-          <label for="todate">to:</label>
-          <input ng-model="toDate" type="date" name="tdate" />
+        <div class="input-field col s6">
+          <input ng-model="toDate" type="date" id="tdate" />
+          <label class="active" for="tdate">To:</label>
         </div>
-        <div class="right">
-          <button ng-click="gatherData()" type="submit">Submit</button>
+        <div class="col s12">
+          <div class="center">
+            <button class="lime waves-effect waves-light btn" ng-click="gatherData()" type="submit">Submit</button>
+          </div>
         </div>
-      </form>
-    </section>
+      </section>
+    </form>
   </section>
 </section>
-<section class="green darken-1 bigHeight information">
+<section class="light-green darken-1 information">
   <!--<section class="container">-->
   <section class="row">
     <div class="col s12 m4">
-      <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur veniam ut laborum aliquam quia eius explicabo praesentium, dolorem amet provident illo ad error, tempora cum, harum sequi delectus consectetur cupiditate.</p>
+      <div class="icon-block">
+        <h2 class="center lime-text"><i class="fa fa-sun-o 2x"></i></h2>
+        <h5 class="center white-text">Be More Informed</h5>
+        <p class="white-text light">How do you know the weather forecast for a trip that you're booking three months in advance? Using historical weather data we will provide the average temperatures so you know what to expect when you get off the train. </p>
+      </div>
     </div>
     <div class="col s12 m4">
-      <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At nam sapiente tempora nihil nisi, ex repellat, quod asperiores quae expedita fugit aliquid excepturi odit, incidunt iste, explicabo modi. Nisi, quae.</p>
+      <h2 class="center lime-text"><i class="fa fa-suitcase 2x"></i></h2>
+      <h5 class="center white-text">Save Space</h5>
+      <p class="white-text light">Once you know the weather, now you be can selective on what you bring. No more extra luggage, no more unncessary baggage fees.</p>
     </div>
     <div class="col s12 m4">
-      <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur veniam ut laborum aliquam quia eius explicabo praesentium, dolorem amet provident illo ad error, tempora cum, harum sequi delectus consectetur cupiditate.</p>
+      <h2 class="center lime-text"><i class="fa fa-map-signs 2x"></i></h2>
+      <h5 class="center white-text">One less stop</h5>
+      <p class="white-text light">Rather than going one service to check ticket prices and other to find out what the weather will be during your trip, why not just use one service?</p>
     </div>
   </section>
   <!--</section>-->
