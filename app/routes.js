@@ -1,6 +1,6 @@
 // app/routes.js
-var path    = require('path');
-var models  = require('./models/index.js')
+var path            = require('path');
+var models          = require('./models/index.js')
 var bodyParser 			= require('body-parser');
 
 module.exports = function(app) {

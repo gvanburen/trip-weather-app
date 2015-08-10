@@ -12,6 +12,7 @@ angular.module('homeCtrl',[])
 				'toDate': $scope.toDate,
 				'fromDate': $scope.fromDate
 			};
+
 			storageFactory.setData('trip', JSON.stringify(tripData));
 			// test = JSON.parse(storageFactory.getData('trip'));
 			// $log.log(test.destination);

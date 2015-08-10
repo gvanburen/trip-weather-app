@@ -1,14 +1,35 @@
 angular.module('tripCtrl',[])
     .controller('tripController', ['$scope', '$http', '$log', 'storageFactory', 'railFactory',
     function($scope, $http, $log, storageFactory, railFactory){
-      var wolfData = JSON.parse(storageFactory.getData('wolf'));
-      $scope.weather = wolfData;
-
       var tripData = JSON.parse(storageFactory.getData('trip'));
-      $scope.origin = tripData.origin;
-      $scope.destination = tripData.destination;
-      $scope.toDate = tripData.toDate;
-      $scope.fromDate = tripData.fromDate;
+        $scope.origin = tripData.origin;
+        $scope.destination = tripData.destination;
+        $scope.toDate = tripData.toDate;
+        $scope.fromDate = tripData.fromDate;
+
+      var wolfData = JSON.parse(storageFactory.getData('wolf'));
+
+      function filtered (data){
+        for(i=0;i<data.length;i++){
+          if(data[i].title == "Temperature history"){
+            $log.log('found it!');
+            var temp = data[i].subpods[0].value;
+          }
+        }
+        textParser(temp);
+      };
+      function textParser(text){
+        $log.log(text);
+  			text = text.match(/([0-9])+( °F| °C)\s+/g);
+  			textArray = text.toString();
+  			temp = textArray.match(/([0-9])\w+/g);
+  			tempHigh = temp.slice(1,2);
+  			tempHigh = tempHigh.toString();
+  			tempLow = temp.slice(2,3);
+  			tempLow = tempLow.toString();
+  			$scope.tempHigh = tempHigh;
+  			$scope.tempLow = tempLow;
+      };
 
       function cleanUp(){
         $log.log('cleaning up');
@@ -49,5 +70,6 @@ angular.module('tripCtrl',[])
       cleanUp();
       getOrigin();
       getDestination();
+      filtered(wolfData);
 
     }]);
