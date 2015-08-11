@@ -6,13 +6,24 @@
         <li><a href="" ng-click="scrollTo('learnMore')">Learn More</a></li>
       </ul>
     </div>
-</nav>
+  </nav>
 </div>
 <section class="container valign-wrapper bigHeight" id="learnMore">
   <section class="row valign">
     <section class="col s12 m6">
       <h2>Pack Accordingly.</h2>
     </section>
+    <div ng-show="loading" class="preloader-wrapper big active overlay">
+      <div class="spinner-layer spinner-light-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
     <form class="col s12 m6">
       <section class="row">
         <div class="input-field col s6">

@@ -29,6 +29,7 @@ angular.module('tripRail',[])
             },
               getFare: function(fareData){
                 fareData = JSON.stringify(fareData);
+                $log.log("I'm getting fare for: " + fareData);
                 return $http.post('/fare', fareData);
                 //   .success(function(fare){
                 //     //$log.log(fare);

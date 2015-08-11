@@ -6,6 +6,7 @@ angular.module('homeCtrl',[])
 			$anchorScroll();
 		};
 		$scope.gatherData = function(){
+			preLoader();
 			var tripData = {
 				'origin': $scope.origin,
 				'destination': $scope.destination,
@@ -23,5 +24,8 @@ angular.module('homeCtrl',[])
 					$location.path('/trip');
 				});
 
+		};
+		function preLoader(){
+			$scope.loading = true;
 		};
 	}]);
