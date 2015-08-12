@@ -2,7 +2,6 @@ angular.module('tripCtrl',[])
     .controller('tripController', ['$scope', '$http', '$log', 'storageFactory', 'railFactory',
     function($scope, $http, $log, storageFactory, railFactory){
       $scope.loading = true;
-      $scope.fareFound = false;
 
       var tripData = JSON.parse(storageFactory.getData('trip'));
         $scope.origin = tripData.origin;
@@ -11,11 +10,13 @@ angular.module('tripCtrl',[])
         $scope.fromDate = tripData.fromDate;
 
       var wolfData = JSON.parse(storageFactory.getData('wolf'));
+      $log.log(wolfData);
 
       function filtered (data){
         for(i=0;i<data.length;i++){
           if(data[i].title == "Temperature history"){
             var temp = data[i].subpods[0].value;
+            $scope.tempImage = data[i].subpods[0].image;
             $scope.tempFound = true;
           } else {
             $scope.tempFound = false;
@@ -68,10 +69,12 @@ angular.module('tripCtrl',[])
         //var fareData = storageFactory.getData('fareData');
         railFactory.getFare(fareData).success(function(data){
           $scope.tickets = data.fares;
+          $scope.loading = false;
           $scope.fareFound = true;
           // $log.log($scope.tickets);
         }).error(function(err){
-          $scope.fareFound = false;
+          $scope.noFare = true;
+          $scope.loading = false;
         });
       };
 

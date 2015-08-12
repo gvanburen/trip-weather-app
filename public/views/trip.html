@@ -8,18 +8,22 @@
 <section class="white bigHeight information">
   <section class="container">
   <section class="row">
-    <div ng-show="loading" class="preloader-wrapper big active overlay">
-      <div class="spinner-layer spinner-light-green">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
+    <div ng-show="loading" class="col s12 m6">
+      <div class="center">
+        <div class="preloader-wrapper big active loading">
+          <div class="spinner-layer spinner-yellow-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div ng-hide="fareFound" class="col s12 m6">
+    <div ng-show="noFare" class="col s12 m6">
       <h4>No fare found</h4>
     </div>
     <div ng-show="fareFound" class="col s12 m6">
@@ -50,18 +54,17 @@
     </div>
     <div ng-show="tempFound" class="col s12 m6">
       <h4>Weather</h4>
-      <br/>
+      </br>
       <section ng-scope="tempHigh">
-        <p>
-          The average high temperature during your trip is:
-        </p>
-        <h4 class="center">{{ tempHigh }} degrees</h4>
+        <p>The average high temperature during your trip is:</br>
+        <span class="tripTemp">{{ tempHigh }} degrees</span></p>
       </section>
       <section ng-scope="tempLow">
-        <p>
-          The average low temperature during your trip is:
-        </p>
-        <h4 class="center">{{ tempLow }} degrees</h4>
+        <p>The average low temperature during your trip is:</br>
+        <span class="tripTemp">{{ tempLow }} degrees</span></p>
+      </section>
+      <section ng-scope="tempImage">
+        <img ng-src="{{ tempImage }}" />
       </section>
     </div>
   </section>
