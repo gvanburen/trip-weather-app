@@ -15,11 +15,13 @@ angular.module('tripCtrl',[])
       function filtered (data){
         for(i=0;i<data.length;i++){
           if(data[i].title == "Temperature history"){
+            $log.log('i found it!');
             var temp = data[i].subpods[0].value;
             $scope.tempImage = data[i].subpods[0].image;
             $scope.tempFound = true;
           } else {
-            $scope.tempFound = false;
+            $scope.noTemp = true;
+            $scope.loading = false;
           }
         }
         textParser(temp);
