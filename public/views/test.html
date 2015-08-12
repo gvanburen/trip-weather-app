@@ -1,7 +1,16 @@
 <div ng-controller="testController">
-    This is my destination: {{test}}
+  <input type="search" placeholder="What are you looking for?" ng-model="query">
+  <div ng-model="query" ng-options="location for location in locations">
+
+  </div>
+  <div ng-repeat="location in locations | filter:query" >
+  <p>
+    {{location}}
+  </p>
+  </div>
+
+  This is my destination: {{query}}
 <!-- <label>Search: <input ng-model="searchText"></label> -->
-  <select ng-model="test" ng-options="location.value for location in locations">
-  </select>
+
 </div>
 <!-- ng-repeat="location in locations | filter:searchText"  -->
