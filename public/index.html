@@ -4,24 +4,21 @@
     <meta charset="utf-8">
     <base href="/">
     <title>weather Trip</title>
-    <link rel="stylesheet" type="text/css" href="libs/materialize/dist/css/materialize.css">
+    <link rel="stylesheet" type="text/css" href="libs/materialize/dist/css/materialize.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/public/css/trip.css">
+    <!-- endinject -->
   </head>
   <body>
     <div ng-view>
     </div>
-    <script src="libs/angular/angular.js"></script>
-    <script src="libs/angular-route/angular-route.js"></script>
-    <script src="libs/jquery/dist/jquery.js"></script>
+    <script src="libs/angular/angular.min.js"></script>
+    <script src="libs/angular-route/angular-route.min.js"></script>
+    <script src="libs/jquery/dist/jquery.min.js"></script>
 
-    <script src="js/controllers/testCtrl.js" charset="utf-8"></script>
-    <script src="js/controllers/homeCtrl.js"></script>
-    <script src="js/controllers/tripCtrl.js" charset="utf-8"></script>
-    <script src="js/factories/storageFactory.js" charset="utf-8"></script>
-    <script src="js/factories/wolfFactory.js" charset="utf-8"></script>
-    <script src="js/factories/railFactory.js" charset="utf-8"></script>
-    <script src="js/appRoutes.js" charset="utf-8"></script>
-    <script src="js/app.js" charset="utf-8"></script>
+    <!-- inject:js -->
+    <script src="/public/js/trip.min.js"></script>
+    <!-- endinject -->
   </body>
 </html>

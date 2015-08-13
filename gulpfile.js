@@ -12,42 +12,26 @@ var gutil = require('gulp-util');
 var minifyHtml = require('gulp-minify-html');
 var rev = require('gulp-rev');
 
-gulp.task('clean', function(){
-    del([
-    'build/**',
-    '!build']);
-});
-
 gulp.task('scripts', function(){
-    return gulp.src(['dev/assets/js/*.js','dev/**/**/**/*.js'])
-    .pipe(concat('app.js'))
+    return gulp.src(['public/js/*.js','public/js/**/*.js', '!public/js/controllers/testCtrl.js'])
+    .pipe(concat('trip.js'))
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify().on('error', gutil.log))
-    .pipe(gulp.dest('build/js'));
+    .pipe(gulp.dest('public/js'));
 });
 
-gulp.task('usemin', function(){
-    return gulp.src('dev/*.html')
-    .pipe(usemin({
-        css: [minifyCss(), 'concat'],
-        html: [minifyHtml({empty:true})],
-        js: [uglify()]
-    }))
-    .pipe(gulp.dest('build/'));
-})
-
 gulp.task('index', function(){
-    var target = gulp.src('build/index.html')
-    var sources = gulp.src(['build/**/*.js','build/**/*.css'], {read: false});
+    var target = gulp.src('public/index.html')
+    var sources = gulp.src(['public/js/*.min.js','public/css/trip.css'], {read: false});
     return target.pipe(inject(sources))
-    .pipe(gulp.dest('build/'));
+    .pipe(gulp.dest('public/'));
 });
 
 gulp.task('minify-css', function(){
-    return gulp.src('dev/**/**/*.css')
-    .pipe(concat('compiled.css'))
+    return gulp.src('public/css/*.css')
+    .pipe(concat('trip.css'))
     .pipe(minifyCss())
-    .pipe(gulp.dest('build/css'));
+    .pipe(gulp.dest('public/css'));
 });
 
 gulp.task('sass', function(){
@@ -57,7 +41,7 @@ gulp.task('sass', function(){
 });
 
 gulp.task('sass:watch', function () {
-  gulp.watch('dev/**/**/*.scss', ['sass']);
+  gulp.watch('public/css/**/*.scss', ['sass']);
 });
 
-gulp.task('build', ['clean', 'sass','usemin']);
+gulp.task('build', ['sass','minify-css', 'scripts', 'index']);
