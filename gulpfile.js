@@ -21,8 +21,8 @@ gulp.task('scripts', function(){
 });
 
 gulp.task('index', function(){
-    var target = gulp.src('public/index.html')
-    var sources = gulp.src(['public/js/*.min.js','public/css/trip.css'], {read: false});
+    var target = gulp.src('index.html')
+    var sources = gulp.src(['public/js/*.min.js','public/css/trip.css'], {read: false}, {ignorePath: '/public/'});
     return target.pipe(inject(sources))
     .pipe(gulp.dest('public/'));
 });
