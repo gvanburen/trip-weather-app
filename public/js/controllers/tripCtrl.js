@@ -19,9 +19,9 @@ angular.module('tripCtrl',[])
             var temp = data[i].subpods[0].value;
             $scope.tempImage = data[i].subpods[0].image;
             $scope.tempFound = true;
+            $scope.noTemp = false;
           } else {
             $scope.noTemp = true;
-            $scope.loading = false;
           }
         }
         textParser(temp);
