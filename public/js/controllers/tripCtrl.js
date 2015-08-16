@@ -2,6 +2,7 @@ angular.module('tripCtrl',[])
     .controller('tripController', ['$scope', '$http', '$log', 'storageFactory', 'railFactory',
     function($scope, $http, $log, storageFactory, railFactory){
       $scope.loading = true;
+      $scope.noTemp = false;
 
       var tripData = JSON.parse(storageFactory.getData('trip'));
         $scope.origin = tripData.origin;
