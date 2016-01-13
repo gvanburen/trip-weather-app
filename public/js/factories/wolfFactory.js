@@ -1,9 +1,9 @@
 angular.module('tripWolf',[])
     .factory('wolfFactory',['$http', '$log', '$q',
         function($http, $log, $q) {
-            var deferred = $q.defer();
             return {
               wolfWeather: function (tripData){
+              var deferred = $q.defer();
               $http.post('/wolf', tripData)
                 .success(function(data){
                   deferred.resolve(data);

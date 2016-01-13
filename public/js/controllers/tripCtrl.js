@@ -4,13 +4,13 @@ angular.module('tripCtrl',[])
       $scope.loading = true;
 
       var tripData = JSON.parse(storageFactory.getData('trip'));
-        $scope.origin = tripData.origin;
-        $scope.destination = tripData.destination;
-        $scope.toDate = tripData.toDate;
-        $scope.fromDate = tripData.fromDate;
+      $scope.origin = tripData.origin;
+      $scope.destination = tripData.destination;
+      $scope.toDate = tripData.toDate;
+      $scope.fromDate = tripData.fromDate;
 
       var wolfData = JSON.parse(storageFactory.getData('wolf'));
-      $log.log(wolfData);
+      $log.log("this is what i'm filtering: " + wolfData);
 
       function filtered (data){
         for(i=0;i<data.length;i++){
@@ -27,7 +27,7 @@ angular.module('tripCtrl',[])
         textParser(temp);
       };
       function textParser(text){
-        $log.log(text);
+        $log.log("i'm parsing this: " + text);
   			text = text.match(/([0-9])+( °F| °C)\s+/g);
   			textArray = text.toString();
   			temp = textArray.match(/([0-9])\w+/g);
@@ -40,24 +40,20 @@ angular.module('tripCtrl',[])
       };
 
       function cleanUp(){
-        $log.log('cleaning up');
         storageFactory.clearData('destCode');
         storageFactory.clearData('originCode');
       };
 
       function getOrigin(){
-        $log.log('getting origin');
         railFactory.getOrigin(tripData);
       };
 
       function getDestination(){
-        $log.log('getting destination');
         railFactory.getDestination(tripData);
         window.setTimeout(setFare,1000);
       };
 
       function setFare(){
-        $log.log('setting locations');
         var fareData = {
           'origCode': storageFactory.getData('originCode'),
           'destCode': storageFactory.getData('destCode')
@@ -67,8 +63,6 @@ angular.module('tripCtrl',[])
       };
 
       function getFare(fareData){
-        $log.log('getting fare');
-        //var fareData = storageFactory.getData('fareData');
         railFactory.getFare(fareData).success(function(data){
           $scope.tickets = data.fares;
           $scope.loading = false;
